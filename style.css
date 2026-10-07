@@ -1,0 +1,367 @@
+#home {
+            position: relative;
+            overflow: hidden; /* Isso impede que qualquer elemento saia pelas laterais */
+            width: 100%;
+        }
+
+        /* Efeito Parallax */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .parallax-sm {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+
+        /* Imagens de fundo (Substitua pelos seus links) */
+        .bg-img-1 { background-image: url('/public/foto1.jpg'); }
+        .bg-img-portfolio { background-image: url('/public/foto8.jpg'); }
+        .bg-img-contact { background-image: url('/public/foto14.jpg'); }
+        .bg-img-resumo { background-image: url('/public/foto10.jpg'); }
+
+        /* Efeito de brilho dourado que pulsa levemente como o reflexo no mar */
+        .ocean-reflection {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 30%;
+            background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: reflection-pulse 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .bird {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        /* O pássaro em si (SVG de silhueta) */
+        .bird-body {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M13,10c-3-2-7-1-10,2c3-1,7-1,10,0c3-1,7-1,10,0C20,9,16,8,13,10z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: wing-flap 0.6s ease-in-out infinite alternate;
+            filter: brightness(0); /* Fica preto como uma silhueta no pôr do sol */
+            opacity: 0.8;
+        }
+
+        /* Animação de bater asas */
+        @keyframes wing-flap {
+            from { transform: scaleY(0.4) rotate(-5deg); }
+            to { transform: scaleY(1) rotate(5deg); }
+        }
+
+        /* Animação de cruzar a tela */
+        .fly-animation {
+            animation: cross-screen linear forwards;
+        }
+
+        @keyframes cross-screen {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        @keyframes reflection-pulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Classe para esconder os itens da timeline antes da animação */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        /* Classe aplicada via JS quando o item entra na tela */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Transição: Roxo (Foto 1) -> Amarelado Escuro (Foto 8) */
+        .bg-purple-to-amber {
+            background: linear-gradient(to bottom, 
+                #2d1b36 0%,    /* Roxo da base da foto 1 */
+                #713f12 100%   /* Amarelado escuro da foto 8 */
+            );
+        }
+
+        /* Transição: Dourado Escuro (Foto 8) -> Azul Marinho -> Preto Espacial */
+        .bg-sunset-to-space {
+            background: linear-gradient(to bottom, 
+                #713f12 0%,    /* Amarelado escuro/queimado da Foto 8 */
+                #1e1b4b 40%,   /* Azul Marinho que você aprovou */
+                #030712 100%   /* Conexão com o Espaço Sideral */
+            );
+        }
+
+        /* Efeito de brilho sutil nos cards para combinar com o tom dourado */
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.1); /* Brilho âmbar sutil */
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-1000px); }
+        }
+
+        .space-bg {
+            /* Gradiente sideral: Azul muito profundo para o preto */
+            background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Camada de Estrelas 1 (Pequenas) */
+        .stars-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 100px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            opacity: 0.3;
+            animation: moveStars 100s linear infinite;
+        }
+
+        /* Camada de Estrelas 2 (Brilho variante) */
+        .stars-layer-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 100px 150px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 200px 300px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 300px 50px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            opacity: 0.2;
+            animation: moveStars 150s linear infinite;
+        }
+
+        .bg-deep-void {
+            background-color: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Nébulas sutis ao fundo */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .nebula-purple { width: 400px; height: 400px; background: #8b5cf6; top: -10%; right: -5%; }
+        .nebula-blue { width: 300px; height: 300px; background: #3b82f6; bottom: 10%; left: -5%; }
+
+        /* Efeito de vidro futurista para o formulário */
+        .glass-form {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Inputs que brilham ao focar */
+        .space-input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .space-input:focus {
+            border-color: #8b5cf6 !important;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        #navbar { 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Classe ativada no Scroll */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.6) !important; /* Fundo escuro translúcido */
+            backdrop-filter: blur(12px); /* Desfoque do fundo */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha fina de luz */
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Efeito de linha animada nos links */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(to right, #8b5cf6, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 
+                        0 0 0 8px rgba(255, 255, 255, 0.1), 
+                        0 0 20px rgba(255, 255, 255, 1);
+            z-index: 5;
+            opacity: 0;
+        }
+
+        /* O rastro da estrela */
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        /* Animação do disparo */
+        .animate-star {
+            animation: shooting 1.5s ease-out forwards;
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: rotate(315deg) translateX(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(315deg) translateX(-1000px);
+                opacity: 0;
+            }
+
+        }
+
+        #contato {
+        position: relative; /* Garante que nada saia da seção */
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .nebula-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0; /* Fica atrás do seu formulário */
+        pointer-events: none; /* Não atrapalha cliques no formulário */
+    }
+
+    .nebula-svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transform: scale(1.2); /* Margem para a animação não mostrar bordas */
+        animation: nebula-float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes nebula-float {
+        from { transform: scale(1.1) translate(0, 0) rotate(0deg); }
+        to { transform: scale(1.3) translate(-2%, 2%) rotate(2deg); }
+    }
+
+    /* Garante que o conteúdo do seu form fique acima da nebulosa */
+    .relative.z-10 {
+        position: relative;
+        z-index: 10;
+    }
+
+    /* =========================================
+        PLACEHOLDERS DOS FUTUROS PROJETOS
+    ========================================= */
+
+    .project-placeholder {
+        height: 16rem;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        border-radius: 0.5rem;
+        background: rgba(0, 0, 0, 0.12);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.9rem;
+        font-style: italic;
+
+        transition: all 0.3s ease;
+    }
+
+    .project-placeholder:hover {
+        border-color: rgba(255, 255, 255, 0.45);
+        background: rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+
+    /* =========================================
+                CARROSSEL DE PROJETOS
+    ========================================= */
+
+    #projects-carousel {
+        cursor: grab;
+        user-select: none;
+    }
+
+    #projects-carousel:active {
+        cursor: grabbing;
+    }
+
+    #projects-track {
+        will-change: transform;
+    }
+
+    #projects-track img {
+        user-select: none;
+        -webkit-user-drag: none;
+    }

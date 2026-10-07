@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SprintForge | João Victor</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+        }
+
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.18), transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.18), transparent 35%),
+                #111827;
+        }
+
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+
+        .tech-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        .navbar-scrolled {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="text-gray-200">
+
+    <!-- NAVBAR -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300">
+
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+            <a href="index.html"
+                class="text-xl font-bold tracking-wide text-white">
+                João Victor
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="index.html#inicio"
+                    class="hover:text-blue-400 transition">
+                    Início
+                </a>
+
+                <a href="index.html#sobre"
+                    class="hover:text-blue-400 transition">
+                    Sobre Mim
+                </a>
+
+                <a href="index.html#projetos"
+                    class="hover:text-blue-400 transition">
+                    Projetos
+                </a>
+
+                <a href="index.html#contato"
+                    class="hover:text-blue-400 transition">
+                    Contato
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <header class="hero-gradient pt-32 pb-20">
+
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="mb-8">
+
+                <a href="index.html#projetos"
+                    class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Voltar para projetos
+                </a>
+
+            </div>
+
+            <div class="max-w-4xl">
+
+                <span class="inline-block mb-5 px-4 py-2 rounded-full
+                    bg-blue-500/10 border border-blue-400/20
+                    text-blue-300 text-sm">
+                    Projeto Full Stack • Futuro SaaS
+                </span>
+
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+                    SprintForge
+                </h1>
+
+                <p class="mt-6 text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl">
+                    Uma plataforma de gestão ágil desenvolvida para centralizar
+                    projetos, tarefas, sprints, métricas e evolução das equipes
+                    em um único ambiente.
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-6 py-20">
+
+        <div class="grid lg:grid-cols-3 gap-12">
+
+            <!-- COLUNA PRINCIPAL -->
+            <div class="lg:col-span-2 space-y-12">
+
+                <!-- IMAGEM PRINCIPAL -->
+                <section>
+
+                    <div class="overflow-hidden rounded-2xl border border-slate-700 shadow-2xl bg-slate-900">
+
+                        <img src="/public/projetos/projeto-sprintforge1.png"
+                            alt="Interface principal do SprintForge"
+                            class="project-image w-full object-cover">
+
+                    </div>
+
+                </section>
+
+
+                <!-- GALERIA -->
+                <section>
+
+                    <h2 class="text-2xl font-bold text-white mb-6">
+                        Interface da plataforma
+                    </h2>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-900">
+                            <img src="/public/projetos/projeto-sprintforge2.png"
+                                alt="Tela do SprintForge"
+                                class="project-image w-full object-cover">
+                        </div>
+
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-900">
+                            <img src="/public/projetos/projeto-sprintforge3.png"
+                                alt="Outra tela do SprintForge"
+                                class="project-image w-full object-cover">
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SOBRE -->
+                <section>
+
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        Sobre o Projeto
+                    </h2>
+
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+
+                        <p>
+                            O <strong class="text-white">SprintForge</strong> é uma
+                            plataforma de gerenciamento de projetos inspirada
+                            principalmente em metodologias ágeis como Scrum e
+                            Kanban.
+                        </p>
+
+                        <p>
+                            O projeto nasceu com o objetivo de criar uma solução
+                            própria para organizar o ciclo completo de
+                            desenvolvimento de software, permitindo acompanhar
+                            projetos, tarefas, sprints e indicadores de evolução
+                            em um único ambiente.
+                        </p>
+
+                        <p>
+                            Além da gestão tradicional de tarefas, a plataforma
+                            possui recursos voltados para acompanhamento de
+                            produtividade, evolução por XP, análise de métricas,
+                            maturidade ágil e suporte através de um assistente
+                            baseado em inteligência artificial.
+                        </p>
+
+                        <p>
+                            A aplicação foi construída como um projeto autoral
+                            Full Stack e está sendo desenvolvida pensando em uma
+                            futura evolução para um produto SaaS.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FUNCIONALIDADES -->
+                <section>
+
+                    <h2 class="text-3xl font-bold text-white mb-8">
+                        Principais funcionalidades
+                    </h2>
+
+                    <div class="grid md:grid-cols-2 gap-5">
+
+                        <!-- Dashboard -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-blue-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-chart-line text-blue-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Dashboard
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Visão geral do projeto, tarefas, progresso,
+                                indicadores e principais informações da equipe.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Kanban -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-purple-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-table-columns text-purple-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Kanban
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Organização visual do fluxo de trabalho através
+                                de colunas e movimentação de tarefas.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Scrum -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-arrows-rotate text-green-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Scrum
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Gerenciamento de Product Backlog, Sprint Backlog,
+                                sprints e fluxo de desenvolvimento.
+                            </p>
+
+                        </div>
+
+
+                        <!-- XP -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-yellow-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-bolt text-yellow-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Sistema de XP
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Sistema de experiência para acompanhar evolução,
+                                produtividade e progresso dos usuários.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Analytics -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-cyan-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-chart-pie text-cyan-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Analytics
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Métricas e indicadores para analisar o desempenho
+                                e evolução dos projetos.
+                            </p>
+
+                        </div>
+
+
+                        <!-- IA -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-lg bg-pink-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-robot text-pink-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Assistente Ágil
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Assistente voltado para apoiar decisões e dúvidas
+                                relacionadas ao desenvolvimento ágil.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Maturidade -->
+                        <div class="tech-card p-6 rounded-xl bg-slate-900 border border-slate-800 md:col-span-2">
+
+                            <div class="w-11 h-11 rounded-lg bg-orange-500/10
+                                flex items-center justify-center mb-4">
+
+                                <i class="fa-solid fa-ranking-star text-orange-400"></i>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Maturidade Ágil
+                            </h3>
+
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Recursos destinados a acompanhar o nível de
+                                maturidade dos processos ágeis utilizados pelo
+                                projeto e pela equipe.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TECNOLOGIAS -->
+                <section>
+
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        Desenvolvimento
+                    </h2>
+
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+
+                        <p>
+                            O frontend foi desenvolvido utilizando
+                            <strong class="text-white">React + TypeScript</strong>,
+                            com Tailwind CSS para construção da interface.
+                        </p>
+
+                        <p>
+                            O backend utiliza
+                            <strong class="text-white">Node.js e Express</strong>,
+                            responsável pelas APIs e regras de negócio da
+                            aplicação.
+                        </p>
+
+                        <p>
+                            A persistência dos dados é realizada utilizando
+                            <strong class="text-white">PostgreSQL</strong>,
+                            com <strong class="text-white">Prisma ORM</strong>
+                            para comunicação entre a aplicação e o banco de dados.
+                        </p>
+
+                        <p>
+                            A arquitetura foi estruturada pensando em
+                            escalabilidade e na possibilidade de transformar a
+                            aplicação em um produto SaaS no futuro.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- SIDEBAR -->
+            <aside>
+
+                <div class="lg:sticky lg:top-28 space-y-6">
+
+                    <!-- TECNOLOGIAS -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+
+                        <h3 class="text-xl font-bold text-white mb-6">
+                            Tecnologias
+                        </h3>
+
+                        <div class="flex flex-wrap gap-2">
+
+                            <span class="px-3 py-2 rounded-lg bg-blue-500/10
+                                text-blue-300 text-sm">
+                                React
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-blue-500/10
+                                text-blue-300 text-sm">
+                                TypeScript
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-cyan-500/10
+                                text-cyan-300 text-sm">
+                                Tailwind CSS
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-green-500/10
+                                text-green-300 text-sm">
+                                Node.js
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-gray-500/10
+                                text-gray-300 text-sm">
+                                Express
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-purple-500/10
+                                text-purple-300 text-sm">
+                                Prisma
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-indigo-500/10
+                                text-indigo-300 text-sm">
+                                PostgreSQL
+                            </span>
+
+                            <span class="px-3 py-2 rounded-lg bg-orange-500/10
+                                text-orange-300 text-sm">
+                                Git
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LINK GITHUB -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+
+                        <h3 class="text-xl font-bold text-white mb-4">
+                            Código-fonte
+                        </h3>
+
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Confira o desenvolvimento do projeto, sua estrutura
+                            e evolução diretamente no GitHub.
+                        </p>
+
+                        <a href="https://github.com/dev-joaovb/sprintforge"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-full inline-flex items-center justify-center gap-3
+                            px-5 py-3 rounded-lg bg-white text-slate-900
+                            font-semibold hover:bg-gray-200 transition">
+
+                            <i class="fa-brands fa-github text-lg"></i>
+
+                            Ver no GitHub
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- INFORMAÇÕES -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+
+                        <h3 class="text-xl font-bold text-white mb-6">
+                            Informações
+                        </h3>
+
+                        <div class="space-y-5">
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                    Ano
+                                </p>
+
+                                <p class="text-white font-medium">
+                                    2026
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                    Serviço
+                                </p>
+
+                                <p class="text-white font-medium">
+                                    Desenvolvimento Full Stack
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                    Tipo de projeto
+                                </p>
+
+                                <p class="text-white font-medium">
+                                    Futuro SaaS
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                    Status
+                                </p>
+
+                                <p class="text-blue-400 font-medium">
+                                    Em evolução
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- CTA -->
+    <section class="border-t border-slate-800 bg-slate-950">
+
+        <div class="max-w-6xl mx-auto px-6 py-20 text-center">
+
+            <span class="text-blue-400 text-sm uppercase tracking-widest">
+                Próximo projeto
+            </span>
+
+            <h2 class="mt-4 text-3xl md:text-4xl font-bold text-white">
+                Explorando novas possibilidades com tecnologia
+            </h2>
+
+            <p class="mt-5 text-gray-400 max-w-2xl mx-auto">
+                O SprintForge representa uma etapa importante na construção de
+                aplicações Full Stack mais completas, escaláveis e orientadas
+                a produtos reais.
+            </p>
+
+            <a href="index.html#projetos"
+                class="inline-flex items-center gap-2 mt-8 px-6 py-3
+                rounded-lg bg-white text-slate-900 font-semibold
+                hover:bg-gray-200 transition">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar aos projetos
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-slate-900">
+
+        <div class="max-w-6xl mx-auto px-6 py-10">
+
+            <div class="flex flex-col md:flex-row
+                items-center justify-between gap-6">
+
+                <p class="text-gray-500 text-sm">
+                    © 2026 João Victor. Todos os direitos reservados.
+                </p>
+
+                <div class="flex items-center gap-5">
+
+                    <a href="#"
+                        class="text-gray-500 hover:text-white transition"
+                        aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                    </a>
+
+                    <a href="https://github.com/dev-joaovb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-white transition"
+                        aria-label="GitHub">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+
+                    <a href="#"
+                        class="text-gray-500 hover:text-white transition"
+                        aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+
+                    <a href="#"
+                        class="text-gray-500 hover:text-white transition"
+                        aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+
+            if (window.scrollY > 40) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
