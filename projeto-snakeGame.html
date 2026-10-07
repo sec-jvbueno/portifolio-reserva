@@ -3,119 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game | Detalhes do Projeto</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        #navbar { transition: all 0.4s ease-in-out; }
-        .tech-badge { @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium border border-gray-200; }
-    </style>
-</head>
-<body class="bg-white text-gray-800">
 
-    <nav id="navbar" class="fixed w-full z-50 top-0 left-0 px-8 py-4 flex justify-between items-center text-black bg-white shadow-sm md:bg-transparent md:text-white">
-        <a href="index.html" class="text-black text-2xl font-bold tracking-widest uppercase">João Victor</a>
-        <div class="space-x-8 font-medium hidden md:block">
-            <a href="index.html#sobre" class="text-black hover:text-blue-400 transition">Sobre</a>
-            <a href="index.html#portfolio" class="text-black hover:text-blue-400 transition font-bold border-b-2 border-blue-400">Portifólio</a>
-            <a href="index.html#resumo" class="text-black hover:text-blue-400 transition">Resumo</a>
-            <a href="index.html#contato" class="text-black hover:text-blue-400 transition">Contato</a>
+    <title>Snake Game | João Victor</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+</head>
+
+<body class="bg-slate-950 text-gray-200">
+
+    <!-- Navbar -->
+    <nav
+        id="navbar"
+        class="fixed top-0 left-0 w-full z-50 px-6 md:px-10 py-5 bg-slate-950/80 backdrop-blur-md border-b border-white/5"
+    >
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <a
+                href="index.html"
+                class="text-white text-xl md:text-2xl font-bold tracking-widest uppercase"
+            >
+                João Victor
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition">
+                    Sobre
+                </a>
+
+                <a
+                    href="index.html#portfolio"
+                    class="text-white border-b border-blue-400 pb-1"
+                >
+                    Portfólio
+                </a>
+
+                <a href="index.html#resumo" class="text-gray-300 hover:text-white transition">
+                    Resumo
+                </a>
+
+                <a href="index.html#contato" class="text-gray-300 hover:text-white transition">
+                    Contato
+                </a>
+            </div>
+
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 bg-gray-50 px-6">
-        <div class="max-w-6xl mx-auto">
-            <nav class="text-sm text-gray-500 mb-4">
-                <a href="index.html" class="hover:text-black">Home</a> / 
-                <a href="index.html#portfolio" class="hover:text-black">Portifólio</a> / 
-                <span class="text-black font-semibold">Snake Game</span>
-            </nav>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Snake Game</h1>
-            <p class="text-xl text-gray-600 italic">Um jogo clássico de Snake desenvolvido em HTML, CSS, JavaScript e Node.js.</p>
+
+    <!-- Hero -->
+    <header class="relative pt-36 pb-24 px-6 overflow-hidden">
+
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 via-slate-950 to-slate-950"></div>
+
+        <div class="absolute top-20 right-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-7xl mx-auto">
+
+            <a
+                href="index.html#portfolio"
+                class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition mb-8"
+            >
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao portfólio
+            </a>
+
+            <div class="max-w-4xl">
+
+                <span
+                    class="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium mb-6"
+                >
+                    Projeto Frontend • Jogo Web
+                </span>
+
+                <h1
+                    class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6"
+                >
+                    Snake Game
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl">
+                    Uma releitura moderna do clássico Snake, desenvolvida com tecnologias
+                    web e diferentes níveis de desafio, fases e mecânicas de progressão.
+                </p>
+
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            <div class="lg:col-span-2 space-y-8">
-                <div class="rounded-xl overflow-hidden shadow-2xl">
-                    <img src="/public/projetos/snake1.png" alt="Preview do Projeto" class="w-full h-auto">
+
+    <!-- Main -->
+    <main class="relative max-w-7xl mx-auto px-6 pb-24">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+            <!-- Main content -->
+            <div class="lg:col-span-2 space-y-12">
+
+                <!-- Main image -->
+                <div
+                    class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl"
+                >
+                    <img
+                        src="/public/projetos/snake1.png"
+                        alt="Tela principal do Snake Game"
+                        class="w-full h-auto"
+                    >
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="/public/projetos/snake2.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
-                    <img src="/public/projetos/snake3.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
-                </div>
 
-                <div class="prose prose-lg max-w-none text-gray-700">
-                    <h2 class="text-2xl font-bold text-black mb-4">Sobre o Projeto</h2>
-                    <p class="mb-4 text-justify leading-relaxed">
-                        Este projeto do <strong>Snake Game</strong> é uma releitura moderna do clássico atemporal que marcou a história dos jogos digitais. O foco principal do desenvolvimento foi a implementação de uma <strong>lógica de algoritmos precisa</strong> para o controle de movimento e detecção de colisões em tempo real. Utilizando JavaScript puro para a manipulação da lógica e renderização, o jogo entrega uma experiência de alta fidelidade, garantindo fluidez e uma jogabilidade responsiva que desafia a agilidade do usuário.
-                    </p>
-                    <p class="text-justify leading-relaxed">
-                        A arquitetura da aplicação é potencializada pelo <strong>Node.js</strong> no back-end, permitindo o gerenciamento de um ranking global de pontuações e a persistência de dados dos jogadores. A interface, construída com <strong>HTML5 e CSS3</strong>, segue uma estética minimalista e totalmente responsiva, adaptando-se a diferentes tamanhos de tela. Este projeto demonstra minha capacidade de estruturar sistemas interativos complexos e aplicar conceitos de <strong>programação orientada a eventos</strong> em um ambiente web performático.
-                    </p>
-                </div>
-            </div>
+                <!-- Gallery -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-            <div class="space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <h3 class="text-lg font-bold mb-4 uppercase tracking-wider">Tecnologias</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">HTML</span>
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">Node.js</span>
-                        <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-bold">CSS</span>
-                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">JavaScript</span>
-                        <span class="hidden bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-bold">Figma</span>
+                    <div
+                        class="rounded-xl overflow-hidden border border-slate-800 bg-slate-900"
+                    >
+                        <img
+                            src="/public/projetos/snake2.png"
+                            alt="Tela de gameplay do Snake Game"
+                            class="w-full h-auto hover:scale-[1.02] transition duration-500"
+                        >
                     </div>
+
+                    <div
+                        class="rounded-xl overflow-hidden border border-slate-800 bg-slate-900"
+                    >
+                        <img
+                            src="/public/projetos/snake3.png"
+                            alt="Tela de seleção e progressão do Snake Game"
+                            class="w-full h-auto hover:scale-[1.02] transition duration-500"
+                        >
+                    </div>
+
                 </div>
 
-                <div class="flex flex-col gap-4">
-                    <a href="https://sejvsnakegame.netlify.app/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-black text-white py-4 rounded-lg font-bold hover:bg-gray-800 transition shadow-lg">
-                        <i class="fas fa-external-link-alt"></i> Acessar Site Ao Vivo
-                    </a>
-                    <a href="https://github.com/dev-joaovb/SnakeGame" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 border-2 border-black text-black py-4 rounded-lg font-bold hover:bg-black hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i> Ver Código Fonte
-                    </a>
-                </div>
 
-                <div class="pt-6 border-t border-gray-200 text-sm text-gray-500 space-y-2">
-                    <p class="hidden"><strong>Cliente:</strong> Phrasemídia Solutions</p>
-                    <p><strong>Ano:</strong> 2023</p>
-                    <p><strong>Serviço:</strong>Development</p>
-                </div>
+                <!-- About -->
+                <section>
+
+                    <div class="mb-6">
+                        <span class="text-green-400 text-sm font-semibold uppercase tracking-widest">
+                            Visão geral
+                        </span>
+
+                        <h2 class="text-3xl font-bold text-white mt-2">
+                            Sobre o Projeto
+                        </h2>
+                    </div>
+
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+
+                        <p>
+                            O <strong class="text-white">Snake Game</strong> é uma releitura
+                            do clássico jogo de cobra, desenvolvida para navegador com foco
+                            em lógica de programação, interação com o usuário e progressão
+                            de dificuldade.
+                        </p>
+
+                        <p>
+                            O projeto utiliza
+                            <strong class="text-white">JavaScript puro</strong> para
+                            controlar a movimentação, colisões, pontuação e regras da
+                            partida, enquanto o
+                            <strong class="text-white">Canvas API</strong> é utilizado
+                            para a renderização do jogo.
+                        </p>
+
+                        <p>
+                            A proposta vai além de uma partida tradicional: o jogador pode
+                            escolher entre diferentes fases e níveis de dificuldade,
+                            avançando progressivamente conforme supera os desafios.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Features -->
+                <section>
+
+                    <div class="mb-8">
+                        <span class="text-green-400 text-sm font-semibold uppercase tracking-widest">
+                            Funcionalidades
+                        </span>
+
+                        <h2 class="text-3xl font-bold text-white mt-2">
+                            Principais Recursos
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                10 fases
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Progressão por diferentes fases com desafios que aumentam
+                                conforme o jogador avança.
+                            </p>
+                        </div>
+
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-gauge-high"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                5 dificuldades
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Modos Fácil, Normal, Difícil, Muito Difícil e Impossível.
+                            </p>
+                        </div>
+
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Sistema de pontuação
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                A partida acompanha a pontuação do jogador durante o
+                                desenvolvimento da fase.
+                            </p>
+                        </div>
+
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-pause"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Pausa e continuação
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                O jogador pode pausar e continuar a partida utilizando os
+                                comandos disponíveis.
+                            </p>
+                        </div>
+
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Controles por teclado
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Interação baseada em comandos de teclado para controlar
+                                diretamente a movimentação do personagem.
+                            </p>
+                        </div>
+
+
+                        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="w-11 h-11 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-arrows-rotate"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Reinício de partida
+                            </h3>
+
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Após o fim da partida, o jogador pode reiniciar o desafio
+                                e tentar novamente.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Development -->
+                <section>
+
+                    <div class="mb-6">
+                        <span class="text-green-400 text-sm font-semibold uppercase tracking-widest">
+                            Desenvolvimento
+                        </span>
+
+                        <h2 class="text-3xl font-bold text-white mt-2">
+                            Construção do Projeto
+                        </h2>
+                    </div>
+
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+
+                        <p>
+                            O desenvolvimento foi realizado utilizando
+                            <strong class="text-white">HTML5, CSS3 e JavaScript</strong>,
+                            sem a necessidade de um framework ou backend para executar
+                            a experiência principal do jogo.
+                        </p>
+
+                        <p>
+                            A lógica central envolve controle de eventos do teclado,
+                            movimentação da cobra, detecção de colisões, atualização
+                            da pontuação, gerenciamento das fases e controle dos
+                            diferentes níveis de dificuldade.
+                        </p>
+
+                        <p>
+                            A renderização através do
+                            <strong class="text-white">Canvas API</strong> permite
+                            atualizar visualmente o estado do jogo em tempo real,
+                            mantendo a aplicação inteiramente executada no navegador.
+                        </p>
+
+                    </div>
+
+                </section>
+
             </div>
+
+
+            <!-- Sidebar -->
+            <aside class="space-y-6 lg:sticky lg:top-28 lg:self-start">
+
+                <!-- Technologies -->
+                <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+
+                    <h3 class="text-lg font-bold text-white mb-5">
+                        Tecnologias
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="px-3 py-1.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 text-sm font-medium">
+                            HTML5
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium">
+                            CSS3
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-sm font-medium">
+                            JavaScript
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-sm font-medium">
+                            Canvas API
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Links -->
+                <div class="space-y-3">
+
+                    <a
+                        href="https://github.com/dev-joaovb/SnakeGame"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center gap-3 w-full px-5 py-4 rounded-xl bg-white text-slate-950 font-bold hover:bg-gray-200 transition"
+                    >
+                        <i class="fab fa-github text-xl"></i>
+                        Ver Código-fonte
+                    </a>
+
+                    <a
+                        href="https://sejvsnakegame.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center gap-3 w-full px-5 py-4 rounded-xl border border-slate-700 text-white font-bold hover:bg-slate-800 transition"
+                    >
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        Acessar Site Ao Vivo
+                    </a>
+
+                </div>
+
+
+                <!-- Project information -->
+                <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+
+                    <h3 class="text-lg font-bold text-white mb-6">
+                        Informações
+                    </h3>
+
+                    <div class="space-y-5">
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Ano
+                            </p>
+
+                            <p class="text-white font-medium">
+                                2023
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Serviço
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Desenvolvimento Frontend
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Tipo de projeto
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Jogo Web
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Status
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Concluído
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Arquitetura
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Frontend
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
 
         </div>
+
     </main>
 
-    <footer class="bg-gray-600 hover:bg-black transition-colors duration-700 text-white py-12 mt-20">
-        <div class="text-center space-y-6">
-            <div class="flex justify-center gap-8 text-3xl">
-                <a href="https://www.linkedin.com/in/sejoaovb" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/dev-joaovb" class="hover:text-gray-300 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/sejoaovb/" class="hover:text-pink-500 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5561993726776" class="hover:text-green-500 transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p class="text-sm opacity-75">© 2026 Criado por João Victor B.C. | Direitos Reservados</p>
+
+    <!-- CTA -->
+    <section class="px-6 py-24 border-t border-slate-900 bg-slate-950">
+
+        <div class="max-w-5xl mx-auto text-center">
+
+            <span class="text-green-400 text-sm font-semibold uppercase tracking-widest">
+                Próximo projeto
+            </span>
+
+            <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-6">
+                Explore mais projetos
+            </h2>
+
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Conheça outros projetos desenvolvidos ao longo da minha trajetória
+                em desenvolvimento web e engenharia de software.
+            </p>
+
+            <a
+                href="index.html#portfolio"
+                class="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-white text-slate-950 font-bold hover:bg-gray-200 transition"
+            >
+                Voltar ao portfólio
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
         </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+                <p class="text-sm text-gray-500">
+                    © 2026 João Victor B.C. | Todos os direitos reservados.
+                </p>
+
+                <div class="flex items-center gap-6 text-xl">
+
+                    <a
+                        href="https://www.linkedin.com/in/sejoaovb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        class="text-gray-500 hover:text-blue-400 transition"
+                    >
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a
+                        href="https://github.com/dev-joaovb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        class="text-gray-500 hover:text-white transition"
+                    >
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/sejoaovb/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        class="text-gray-500 hover:text-pink-400 transition"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="https://wa.me/5561993726776"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        class="text-gray-500 hover:text-green-400 transition"
+                    >
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('md:bg-transparent', 'md:text-white', 'py-4');
-                navbar.classList.add('bg-white', 'text-black', 'shadow-lg', 'py-2');
-            } else {
-                // No mobile o navbar sempre será branco para legibilidade
-                if (window.innerWidth > 768) {
-                    navbar.classList.add('md:bg-transparent', 'md:text-white', 'py-4');
-                    navbar.classList.remove('bg-white', 'text-black', 'shadow-lg', 'py-2');
-                }
-            }
-        });
-    </script>
 </body>
 </html>
