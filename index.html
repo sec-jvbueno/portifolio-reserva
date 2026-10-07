@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Victor | Engenheiro de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        #home {
+            position: relative;
+            overflow: hidden; /* Isso impede que qualquer elemento saia pelas laterais */
+            width: 100%;
+        }
+
+        /* Efeito Parallax */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .parallax-sm {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+
+        /* Imagens de fundo (Substitua pelos seus links) */
+        .bg-img-1 { background-image: url('/public/foto1.jpg'); }
+        .bg-img-portfolio { background-image: url('/public/foto8.jpg'); }
+        .bg-img-contact { background-image: url('/public/foto14.jpg'); }
+        .bg-img-resumo { background-image: url('/public/foto10.jpg'); }
+
+        /* Efeito de brilho dourado que pulsa levemente como o reflexo no mar */
+        .ocean-reflection {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 30%;
+            background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: reflection-pulse 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .bird {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        /* O pássaro em si (SVG de silhueta) */
+        .bird-body {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M13,10c-3-2-7-1-10,2c3-1,7-1,10,0c3-1,7-1,10,0C20,9,16,8,13,10z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: wing-flap 0.6s ease-in-out infinite alternate;
+            filter: brightness(0); /* Fica preto como uma silhueta no pôr do sol */
+            opacity: 0.8;
+        }
+
+        /* Animação de bater asas */
+        @keyframes wing-flap {
+            from { transform: scaleY(0.4) rotate(-5deg); }
+            to { transform: scaleY(1) rotate(5deg); }
+        }
+
+        /* Animação de cruzar a tela */
+        .fly-animation {
+            animation: cross-screen linear forwards;
+        }
+
+        @keyframes cross-screen {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        @keyframes reflection-pulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Classe para esconder os itens da timeline antes da animação */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        /* Classe aplicada via JS quando o item entra na tela */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Transição: Roxo (Foto 1) -> Amarelado Escuro (Foto 8) */
+        .bg-purple-to-amber {
+            background: linear-gradient(to bottom, 
+                #2d1b36 0%,    /* Roxo da base da foto 1 */
+                #713f12 100%   /* Amarelado escuro da foto 8 */
+            );
+        }
+
+        /* Transição: Dourado Escuro (Foto 8) -> Azul Marinho -> Preto Espacial */
+        .bg-sunset-to-space {
+            background: linear-gradient(to bottom, 
+                #713f12 0%,    /* Amarelado escuro/queimado da Foto 8 */
+                #1e1b4b 40%,   /* Azul Marinho que você aprovou */
+                #030712 100%   /* Conexão com o Espaço Sideral */
+            );
+        }
+
+        /* Efeito de brilho sutil nos cards para combinar com o tom dourado */
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.1); /* Brilho âmbar sutil */
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-1000px); }
+        }
+
+        .space-bg {
+            /* Gradiente sideral: Azul muito profundo para o preto */
+            background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Camada de Estrelas 1 (Pequenas) */
+        .stars-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 100px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            opacity: 0.3;
+            animation: moveStars 100s linear infinite;
+        }
+
+        /* Camada de Estrelas 2 (Brilho variante) */
+        .stars-layer-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 100px 150px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 200px 300px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 300px 50px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            opacity: 0.2;
+            animation: moveStars 150s linear infinite;
+        }
+
+        .bg-deep-void {
+            background-color: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Nébulas sutis ao fundo */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .nebula-purple { width: 400px; height: 400px; background: #8b5cf6; top: -10%; right: -5%; }
+        .nebula-blue { width: 300px; height: 300px; background: #3b82f6; bottom: 10%; left: -5%; }
+
+        /* Efeito de vidro futurista para o formulário */
+        .glass-form {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Inputs que brilham ao focar */
+        .space-input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .space-input:focus {
+            border-color: #8b5cf6 !important;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        #navbar { 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Classe ativada no Scroll */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.6) !important; /* Fundo escuro translúcido */
+            backdrop-filter: blur(12px); /* Desfoque do fundo */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha fina de luz */
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Efeito de linha animada nos links */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(to right, #8b5cf6, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 
+                        0 0 0 8px rgba(255, 255, 255, 0.1), 
+                        0 0 20px rgba(255, 255, 255, 1);
+            z-index: 5;
+            opacity: 0;
+        }
+
+        /* O rastro da estrela */
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        /* Animação do disparo */
+        .animate-star {
+            animation: shooting 1.5s ease-out forwards;
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: rotate(315deg) translateX(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(315deg) translateX(-1000px);
+                opacity: 0;
+            }
+
+        }
+
+        #contato {
+        position: relative; /* Garante que nada saia da seção */
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .nebula-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0; /* Fica atrás do seu formulário */
+        pointer-events: none; /* Não atrapalha cliques no formulário */
+    }
+
+    .nebula-svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transform: scale(1.2); /* Margem para a animação não mostrar bordas */
+        animation: nebula-float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes nebula-float {
+        from { transform: scale(1.1) translate(0, 0) rotate(0deg); }
+        to { transform: scale(1.3) translate(-2%, 2%) rotate(2deg); }
+    }
+
+    /* Garante que o conteúdo do seu form fique acima da nebulosa */
+    .relative.z-10 {
+        position: relative;
+        z-index: 10;
+    }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav id="navbar" class="fixed w-full z-50 top-0 left-0 px-8 md:px-20 py-4 flex justify-between items-center text-white bg-transparent">
+        <a href="#home" class="text-2xl font-bold tracking-widest uppercase group"> 
+            JOÃO VICTOR B. C.
+        </a>
+
+        <div class="space-x-8 font-medium hidden md:flex">
+            <a href="#sobre" class="nav-link hover:text-purple-300 transition-colors">Sobre</a>
+            <a href="#portfolio" class="nav-link hover:text-purple-300 transition-colors">Portfólio</a>
+            <a href="#resumo" class="nav-link hover:text-purple-300 transition-colors">Resumo</a>
+            <a href="#contato" class="nav-link hover:text-purple-300 transition-colors">Contato</a>
+        </div>
+
+        <div class="hidden md:block">
+            <a href="#contato" class="border border-white/20 px-5 py-2 rounded-full text-sm hover:bg-white hover:text-black transition-all">
+                Contratar
+            </a>
+        </div>
+    </nav>
+
+    <section id="home" class="parallax bg-img-1 flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="ocean-reflection"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h1 class="bg-black bg-opacity-70 text-white text-3xl md:text-5xl lg:text-6xl p-6 font-light tracking-tighter animate-fade-in">
+                JOÃO VICTOR <span class="">BUENO CARNEIRO</span>
+            </h1>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-purple-to-amber px-6 md:px-20 lg:px-40 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-[#f26444]/20 to-transparent blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-2 text-white uppercase tracking-wider">Sobre Mim</h2>
+            <p class="text-amber-200/80 italic text-lg mb-10">Engenheiro de Software e Desenvolvedor de Sistemas</p>
+            
+            <div class="bg-black/20 p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md">
+                <p class="text-gray-200 leading-relaxed text-lg mb-10 text-justify">
+                    Sou um <strong>Engenheiro de Software e Desenvolvedor Web</strong> apaixonado por transformar ideias complexas em soluções digitais elegantes. Atualmente residente no Mato Grosso, Brasil, baseio meu trabalho na paciência, precisão e dedicação total a cada projeto. Com 2 anos de experiência sólida no mercado, venho aprimorando meu arsenal tecnológico para entregar sistemas que não apenas funcionam, mas proporcionam experiências excepcionais. Sou movido pelo desafio de aprender novas ferramentas e metodologias para elevar o padrão do desenvolvimento de software.
+                </p>
+
+                <div class="flex flex-col items-center gap-8">
+                    <div class="">
+                        <img src="/public/foto.svg" alt="Foto João Victor" class="object-cover h-40 w-40 rounded-full border-2 border-amber-400/30">
+                    </div>
+                    
+                    <a href="/public/Curriculum_Joao_victor_2026.pdf" target="_blank" rel="noopener noreferrer" 
+                      class="group relative bg-white text-black px-10 py-4 rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <i class="fas fa-file-pdf"></i> Ver Currículo (PDF)
+                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="parallax-sm bg-img-portfolio flex items-center justify-center relative h-[50vh] md:h-[70vh]">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <h2  class="relative z-10 bg-black bg-opacity-70 text-white text-3xl md:text-5xl p-4 tracking-widest uppercase">Portifólio</h2>
+    </section>
+
+    <section id="trabalhos" class="py-24 bg-sunset-to-space px-6 md:px-20 relative">
+      <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#2d1b36]/50 to-transparent"></div>
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-2 text-white">Meus Trabalhos</h2>
+            <p class="text-gray-200 italic text-lg mb-8">Engenharia de Software e Desenvolvimento de sistemas</p>
+            
+            <p class="text-gray-300 leading-relaxed text-lg mb-10 text-justify">
+                Ao longo da minha jornada, tenho desenvolvido projetos que equilibram <strong>estética moderna e arquitetura robusta</strong>. Meu portfólio reflete a criação de aplicações escaláveis, desde interfaces front-end responsivas até sistemas de back-end complexos e seguros. Utilizo tecnologias de ponta como <strong>React, Node.js e Tailwind CSS, também com ferramentas de IA como N8n e de Low/No Code como Wordpress, Elementor e WooCommerce</strong> para garantir que cada solução seja otimizada para alta performance e excelente experiência do usuário. Meu foco é traduzir requisitos de negócio em <strong>código limpo e funcional</strong>, sempre priorizando a agilidade e a entrega de valor real em cada linha de software que escrevo.
+            </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/harmony1.png" alt="Projeto 1" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Harmony Maestro</h3>
+                        <p class="text-gray-300 text-sm mb-4">React, Node.js, TailwindCSS</p>
+                        <a href="projeto-harmony.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/snake3.png" alt="Projeto 2" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Snake Game</h3>
+                        <p class="text-gray-300 text-sm mb-4">HTML, CSS, JS e Node.js</p>
+                        <a href="projeto-snakeGame.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/multishop1.png" alt="Projeto 3" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Multishop</h3>
+                        <p class="text-gray-300 text-sm mb-4">HTML5, JavaScript, MySQL e Elementor Pro</p>
+                        <a href="projeto-multishop.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/crypto1.png" alt="Projeto 4" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">CryptoDash</h3>
+                        <p class="text-gray-300 text-sm mb-4">React, Node.js e API</p>
+                        <a href="projeto-crypto.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/nosmagic1.png" alt="Projeto 5" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">NosmagiC</h3>
+                        <p class="text-gray-300 text-sm mb-4">HTML, CSS e JavaScript</p>
+                        <a href="projeto-nosmagic.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="/public/projetos/multparts1.png" alt="Projeto 6" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-90 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Elétrica Multparts</h3>
+                        <p class="text-gray-300 text-sm mb-4">HTML5, JavaScript, MySQL e Elementor Pro</p>
+                        <a href="projeto-multparts.html" class="text-white border border-white px-4 py-1 text-sm inline-block w-fit hover:bg-white hover:text-black transition">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resumo" class="parallax-sm bg-img-resumo flex items-center justify-center relative h-[50vh] md:h-[70vh]">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <h2 class="relative z-10 bg-black bg-opacity-70 text-white text-3xl md:text-5xl p-4 tracking-widest uppercase">
+            Resumo
+        </h2>
+    </section>
+
+    <section class="py-20 space-bg overflow-hidden">
+        <div class="stars-layer"></div>
+        <div class="stars-layer-2"></div>
+
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl font-bold text-center mb-20 uppercase tracking-tight text-white">Educação & Experiência</h2>
+
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-[2px] bg-gray-700 h-full hidden md:block"></div>
+
+                <div class="space-y-12 md:space-y-0">
+                    
+                    <div class="reveal flex flex-col md:flex-row items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_1.svg" alt="Bacharel Engenharia" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2019 — 2023</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row-reverse items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_2.svg" alt="Curso Web" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2 md:text-right">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2021 — 2022</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_3.svg" alt="Design Figma" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2022 — 2023</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row-reverse items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_4.svg" alt="Análise de Dados" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2 md:text-right">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2023 — 2023</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_5.svg" alt="Desenvolvimento Django" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2023 — 2023</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row-reverse items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_6.svg" alt="Projeto 146" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2 md:text-right">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2024 — 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_7.svg" alt="WordPress" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2024 — 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row-reverse items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_8.svg" alt="Pos graduação" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2 md:text-right">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2025 — 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal flex flex-col md:flex-row items-center justify-between w-full md:mb-16">
+                        <div class="order-1 md:w-[45%]">
+                            <img src="/public/linha_do_tempo/evento_9.svg" alt="Harmony" 
+                                class="w-full cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-white/10">
+                        </div>
+                        <div class="z-20 flex items-center order-1 bg-black w-4 h-4 rounded-full border-2 border-white shadow-sm"></div>
+                        <div class="order-1 md:w-[45%] px-4 py-2">
+                            <p class="text-lg font-bold italic text-gray-200 tracking-tighter">2025 — 2026</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="parallax-sm bg-img-contact flex items-center justify-center relative h-[50vh] md:h-[70vh]">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <h2 class="relative z-10 bg-gray-800 bg-opacity-70 text-white text-3xl md:text-5xl p-4 tracking-widest uppercase">Contato</h2>
+    </section>
+
+    <section id="contato" class="pt-24 bg-deep-void relative flex flex-col min-h-screen position-relative">
+        <div class="nebula-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" class="nebula-svg">
+        <defs>
+            <filter id="turbulencia-espacial">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="5" seed="1" />
+                <feDisplacementMap in="SourceGraphic" scale="150" />
+            </filter>
+            
+            <radialGradient id="gradiente-fundo" cx="70%" cy="50%" r="70%">
+                <stop offset="0%" stop-color="#ff1e56" />
+                <stop offset="40%" stop-color="#4a0e1c" />
+                <stop offset="100%" stop-color="black" />
+            </radialGradient>
+
+            <radialGradient id="gradiente-silhueta" cx="30%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#1a1a1a" />
+                <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#gradiente-fundo)" filter="url(#turbulencia-espacial)" opacity="0.8" />
+        
+        <rect width="100%" height="100%" fill="url(#gradiente-silhueta)" filter="url(#turbulencia-espacial)" style="mix-blend-mode: multiply;" />
+    </svg>
+</div>
+        <div class="stars-layer"></div>
+        <div class="stars-layer-2"></div>
+        <div class="nebula nebula-purple"></div>
+        <div class="nebula nebula-blue"></div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10 w-full mb-24 px-6 md:px-20">
+            
+            <div class="space-y-10">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-4 tracking-tighter uppercase">Vamos conversar?</h2>
+                    <p class="text-gray-400 text-lg">Estou pronto para transformar sua próxima ideia em realidade digital.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="group flex items-start gap-4">
+                        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all">
+                            <i class="fas fa-map-marker-alt text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Localização</h4>
+                            <p class="text-gray-400">Barra do Garças – MT, Brasil</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex items-start gap-4">
+                        <div class="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
+                            <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">E-mail</h4>
+                            <a href="mailto:joaovictor@phrasemidia.com.br" class="text-gray-400 hover:text-white transition underline decoration-blue-500/30">joaovictor@phrasemidia.com.br</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="glass-form p-8 md:p-10 rounded-2xl space-y-5 shadow-2xl" action="processa_contato.php" method="POST">
+                <input type="text" placeholder="Seu Nome" class="space-input w-full p-4 rounded-xl outline-none">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="email" placeholder="E-mail" class="space-input w-full p-4 rounded-xl outline-none">
+                    <input type="tel" placeholder="Telefone" class="space-input w-full p-4 rounded-xl outline-none">
+                </div>
+                <textarea placeholder="Como posso ajudar?" rows="4" class="space-input w-full p-4 rounded-xl outline-none"></textarea>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl font-bold">LANÇAR MENSAGEM</button>
+            </form>
+        </div>
+
+        <footer class="mt-auto border-t border-white/5 bg-transparent hover:bg-white/5 transition-all duration-1000 ease-in-out py-12 relative z-10 w-full">
+            <div class="max-w-6xl mx-auto text-center space-y-8 px-6">
+                
+                <div class="flex justify-center gap-10 text-3xl">
+                    <a href="https://www.linkedin.com/in/sejoaovb" target="_blank" class="text-gray-400 hover:text-blue-500 transition-all transform hover:scale-125"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/dev-joaovb" target="_blank" class="text-gray-400 hover:text-white transition-all transform hover:scale-125"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/sejoaovb/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-all transform hover:scale-125"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5561993726776" target="_blank" class="text-gray-400 hover:text-green-500 transition-all transform hover:scale-125"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-gray-700 to-transparent mx-auto"></div>
+
+                <div class="space-y-2">
+                    <p class="text-sm tracking-widest text-gray-500 uppercase">
+                        © 2026 Criado por <span class="text-gray-300 font-bold">João Victor B.C.</span>
+                    </p>
+                    <p class="text-[10px] text-gray-600 uppercase tracking-[0.2em]">
+                        Engenheiro de Software & Desenvolvedor de Sistemas
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Estilo ao rolar: Vidro escuro e compacto
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                // Estilo inicial: Transparente e espaçoso
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Suporte extra para navegadores antigos no scroll suave (opcional)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const revealCallback = (entries, observer) => {
+          entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                  // Adiciona um pequeno atraso para cada item aparecer após o outro
+                  setTimeout(() => {
+                      entry.target.classList.add('active');
+                  }, index * 150); 
+              }
+          });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.1 // Ativa quando 10% do item está visível
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        function createBirdGroup() {
+            const section = document.getElementById('home');
+            if (!section) return; // Segurança caso a seção não exista
+
+            const numBirds = Math.floor(Math.random() * 4) + 1;
+            const isDistant = Math.random() > 0.5;
+            const baseHeight = 20 + Math.random() * 40;
+            
+            for (let i = 0; i < numBirds; i++) {
+                setTimeout(() => {
+                    const birdContainer = document.createElement('div');
+                    // 'pointer-events-none' via JS para garantir que não interfira em cliques
+                    birdContainer.className = 'bird fly-animation pointer-events-none';
+                    
+                    const size = isDistant ? (10 + Math.random() * 10) : (30 + Math.random() * 20);
+                    const speed = isDistant ? (15 + Math.random() * 10) : (8 + Math.random() * 5);
+                    const individualHeight = baseHeight + (Math.random() * 10 - 5);
+                    
+                    birdContainer.style.width = `${size}px`;
+                    birdContainer.style.height = `${size}px`;
+                    birdContainer.style.top = `${individualHeight}%`;
+                    birdContainer.style.left = `-100px`; // Começa fora da tela à esquerda
+                    birdContainer.style.animationDuration = `${speed}s`;
+                    birdContainer.style.position = 'absolute'; // Garante o posicionamento
+                    
+                    const birdBody = document.createElement('div');
+                    birdBody.className = 'bird-body';
+                    birdBody.style.animationDuration = `${0.4 + Math.random() * 0.4}s`;
+                    
+                    birdContainer.appendChild(birdBody);
+                    section.appendChild(birdContainer);
+
+                    // Remove o pássaro após a animação para não pesar o site
+                    birdContainer.addEventListener('animationend', () => {
+                        birdContainer.remove();
+                    });
+
+                    // Fallback de segurança (caso a aba seja minimizada e a animação pause)
+                    setTimeout(() => {
+                        if(birdContainer.parentNode) birdContainer.remove();
+                    }, (speed + 2) * 1000);
+
+                }, i * 600);
+            }
+            
+            scheduleNextBirds();
+        }
+
+        function scheduleNextBirds() {
+            // Passa um grupo a cada 20 a 40 segundos
+            const nextInterval = 20000 + Math.random() * 20000;
+            setTimeout(createBirdGroup, nextInterval);
+        }
+
+        // Inicia o ciclo
+        scheduleNextBirds();
+
+        function createShootingStar() {
+            const section = document.getElementById('contato');
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            
+            // Posiciona a estrela em um lugar aleatório no topo ou lateral direita
+            const randomTop = Math.random() * 200; // Até 200px do topo
+            const randomLeft = 50 + (Math.random() * 50); // Lado direito para cruzar para a esquerda
+            
+            star.style.top = `${randomTop}px`;
+            star.style.left = `${randomLeft}%`;
+            
+            section.appendChild(star);
+            
+            // Inicia a animação
+            star.classList.add('animate-star');
+            
+            // Remove o elemento após a animação para não pesar o site
+            setTimeout(() => {
+                star.remove();
+                scheduleNextStar(); // Agenda a próxima após esta terminar
+            }, 2000);
+        }
+
+        function scheduleNextStar() {
+            // Define um tempo aleatório entre 30 segundos (30000ms) e 90 segundos (90000ms)
+            const minTime = 30000;
+            const maxTime = 90000;
+            const randomDelay = Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime;
+            
+            setTimeout(createShootingStar, randomDelay);
+        }
+
+        // Inicia o ciclo da primeira estrela
+        scheduleNextStar();
+    </script>
+</body>
+</html>
