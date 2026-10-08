@@ -1,120 +1,870 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NosmagiC | Detalhes do Projeto</title>
+
+    <title>NosmagiC | Projeto</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        #navbar { transition: all 0.4s ease-in-out; }
-        .tech-badge { @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium border border-gray-200; }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #070b12;
+            color: #e5e7eb;
+        }
+
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .image-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(250, 204, 21, 0.35);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .tech-card {
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(250, 204, 21, 0.3);
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800">
 
-    <nav id="navbar" class="fixed w-full z-50 top-0 left-0 px-8 py-4 flex justify-between items-center text-black bg-white shadow-sm md:bg-transparent md:text-white">
-        <a href="index.html" class="text-black text-2xl font-bold tracking-widest uppercase">João Victor</a>
-        <div class="space-x-8 font-medium hidden md:block">
-            <a href="index.html#sobre" class="text-black hover:text-blue-400 transition">Sobre</a>
-            <a href="index.html#portfolio" class="text-black hover:text-blue-400 transition font-bold border-b-2 border-blue-400">Portifólio</a>
-            <a href="index.html#resumo" class="text-black hover:text-blue-400 transition">Resumo</a>
-            <a href="index.html#contato" class="text-black hover:text-blue-400 transition">Contato</a>
-        </div>
-    </nav>
+<body class="bg-[#070b12] text-gray-200">
 
-    <header class="pt-32 pb-16 bg-gray-50 px-6">
-        <div class="max-w-6xl mx-auto">
-            <nav class="text-sm text-gray-500 mb-4">
-                <a href="index.html" class="hover:text-black">Home</a> / 
-                <a href="index.html#portfolio" class="hover:text-black">Portifólio</a> / 
-                <span class="text-black font-semibold">NosmagiC</span>
-            </nav>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">NosmagiC</h1>
-            <p class="text-xl text-gray-600 italic">Um site de jogos clássicos feitos em JavaScript para diversão e nostalgia.</p>
-        </div>
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-7xl mx-auto px-6 lg:px-8 py-5">
+            <div class="glass border border-white/10 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl">
+
+                <a href="index.html"
+                   class="text-white font-bold tracking-tight hover:text-yellow-400 transition-colors">
+                    João Victor
+                </a>
+
+                <a href="index.html#projetos"
+                   class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="w-4 h-4"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    Voltar aos projetos
+                </a>
+
+            </div>
+        </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            <div class="lg:col-span-2 space-y-8">
-                <div class="rounded-xl overflow-hidden shadow-2xl">
-                    <img src="/public/projetos/nosmagic1.png" alt="Preview do Projeto" class="w-full h-auto">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden hero-grid pt-36 pb-24">
+
+        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-purple-500/10"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="max-w-4xl">
+
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                            border border-yellow-500/20 bg-yellow-500/10
+                            text-yellow-400 text-xs font-semibold uppercase tracking-wider mb-7">
+                    <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                    Projeto Frontend • Web Gaming
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="/public/projetos/nosmagic2.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
-                    <img src="/public/projetos/nosmagic3.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-7">
+                    NosmagiC
+                </h1>
+
+                <p class="text-lg md:text-xl leading-relaxed text-gray-400 max-w-3xl">
+                    Uma plataforma de jogos web desenvolvida em JavaScript,
+                    reunindo diferentes experiências de jogos diretamente no navegador,
+                    com categorias, navegação própria e uma interface inspirada na estética
+                    dos jogos clássicos.
+                </p>
+
+                <div class="flex flex-wrap gap-3 mt-8">
+
+                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300">
+                        HTML5
+                    </span>
+
+                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300">
+                        CSS3
+                    </span>
+
+                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300">
+                        JavaScript
+                    </span>
+
+                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300">
+                        Tailwind CSS
+                    </span>
+
+                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300">
+                        Swiper.js
+                    </span>
+
                 </div>
 
-                <div class="prose prose-lg max-w-none text-gray-700">
-                    <h2 class="text-2xl font-bold text-black mb-4">Sobre o Projeto</h2>
-                    <p class="mb-4 text-justify leading-relaxed">
-                        O <strong>NosmagiC</strong> é um hub de entretenimento digital concebido para resgatar a essência dos grandes clássicos do <em>retrogaming</em> em uma plataforma web moderna. O desafio técnico central consistiu em orquestrar múltiplos motores de jogo — como o <strong>Snake Game, Pac-Man e simuladores de corrida</strong> — dentro de um ecossistema único e fluido. Utilizando <strong>JavaScript puro e manipulação avançada de HTML5 Canvas</strong>, cada título foi reconstruído do zero, priorizando a precisão da física, a lógica de estados e a renderização de sprites, garantindo que a experiência nostálgica seja fiel à jogabilidade original.
-                    </p>
-                    <p class="text-justify leading-relaxed">
-                        Para sustentar essa biblioteca de jogos, foquei no desenvolvimento de uma interface de usuário intuitiva e responsiva, onde o <strong>design visual moderno</strong> serve como moldura para o conteúdo retrô. Através do uso estratégico de CSS3 e sistemas de eventos otimizados, o NosmagiC oferece transições suaves e um carregamento ágil, funcionando como uma <strong>Single Page Application (SPA)</strong> de alta performance. Este projeto reflete minha capacidade de integrar diversas lógicas de programação complexas em um produto final coeso, focado em entretenimento, escalabilidade e na excelência da experiência do usuário (UX).
-                    </p>
-                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <h3 class="text-lg font-bold mb-4 uppercase tracking-wider">Tecnologias</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">HTML</span>
-                        <span class="hidden bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">Node.js</span>
-                        <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-bold">CSS</span>
-                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">JavaScript</span>
+
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+
+        <div class="grid lg:grid-cols-3 gap-10">
+
+            <!-- Conteúdo principal -->
+            <div class="lg:col-span-2 space-y-16">
+
+                <!-- Imagem principal -->
+                <section>
+
+                    <div class="image-card relative overflow-hidden rounded-3xl
+                                border border-white/10 bg-slate-900 shadow-2xl">
+
+                        <img
+                            src="public/projetos/nosmagic1.png"
+                            alt="Tela principal do projeto NosmagiC"
+                            class="w-full h-auto object-cover"
+                        >
+
                     </div>
-                </div>
 
-                <div class="flex flex-col gap-4">
-                    <a href="https://sejvnosmagic.netlify.app/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-black text-white py-4 rounded-lg font-bold hover:bg-gray-800 transition shadow-lg">
-                        <i class="fas fa-external-link-alt"></i> Acessar Site Ao Vivo
-                    </a>
-                    <a href="https://github.com/dev-joaovb/NosmagiC" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 border-2 border-black text-black py-4 rounded-lg font-bold hover:bg-black hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i> Ver Código Fonte
-                    </a>
-                </div>
+                    <div class="grid md:grid-cols-2 gap-5 mt-5">
 
-                <div class="pt-6 border-t border-gray-200 text-sm text-gray-500 space-y-2">
-                    <p class="hidden"><strong>Cliente:</strong> Phrasemídia Solutions</p>
-                    <p><strong>Ano:</strong> 2023</p>
-                    <p><strong>Serviço:</strong>Development</p>
-                </div>
+                        <div class="image-card overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
+                            <img
+                                src="public/projetos/nosmagic2.png"
+                                alt="Interface do NosmagiC"
+                                class="w-full h-auto object-cover"
+                            >
+                        </div>
+
+                        <div class="image-card overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
+                            <img
+                                src="public/projetos/nosmagic3.png"
+                                alt="Jogos disponíveis no NosmagiC"
+                                class="w-full h-auto object-cover"
+                            >
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Sobre -->
+                <section id="sobre">
+
+                    <div class="mb-8">
+
+                        <span class="text-yellow-400 text-sm font-semibold uppercase tracking-widest">
+                            Sobre o projeto
+                        </span>
+
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
+                            Um hub de jogos para a web
+                        </h2>
+
+                    </div>
+
+                    <div class="space-y-5 text-gray-400 leading-relaxed">
+
+                        <p>
+                            O NosmagiC é um projeto de entretenimento desenvolvido para reunir
+                            jogos feitos em JavaScript em uma única experiência web. A plataforma
+                            organiza diferentes jogos e estilos em uma interface centralizada,
+                            permitindo que o usuário navegue pelo catálogo e escolha o que deseja jogar.
+                        </p>
+
+                        <p>
+                            O projeto possui diferentes categorias, como Ação, Aventura, Clássicos,
+                            Tiro, Carro, Multiplayer, Cartas, Memória e Raciocínio. Cada categoria
+                            direciona o usuário para uma seleção própria de jogos.
+                        </p>
+
+                        <p>
+                            Além da organização do catálogo, a interface utiliza uma identidade
+                            visual inspirada na cultura dos jogos clássicos, combinando tipografia
+                            retrô, fundo espacial, efeitos de brilho, animações e um carrossel
+                            interativo para destacar os jogos.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Funcionalidades -->
+                <section>
+
+                    <div class="mb-8">
+
+                        <span class="text-yellow-400 text-sm font-semibold uppercase tracking-widest">
+                            Funcionalidades
+                        </span>
+
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
+                            Uma coleção de experiências
+                        </h2>
+
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-5">
+
+                        <!-- Feature -->
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M14.5 6.5a4.5 4.5 0 11-9 0v1a4.5 4.5 0 109 0v-1zM17 13l4 4m0 0l-2 2m2-2l-2-2"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Catálogo de jogos
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                Diversos jogos independentes reunidos dentro de uma mesma plataforma.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M4 6h16M4 12h16M4 18h10"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Categorias
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                Organização dos jogos por gêneros como ação, aventura,
+                                clássicos, cartas, memória e raciocínio.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M9.75 17L8 20h8l-1.75-3M12 3v10m0 0l-3-3m3 3l3-3"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Jogos no navegador
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                As experiências são executadas diretamente no navegador,
+                                sem necessidade de uma aplicação desktop.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M7 4h10M7 20h10M5 7h14v10H5z"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Interface responsiva
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                A interface utiliza uma estrutura adaptável para diferentes
+                                tamanhos de tela.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M4 12a8 8 0 1016 0 8 8 0 00-16 0zm8-4v4l3 2"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Carrossel interativo
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                Os jogos em destaque são apresentados através de um
+                                carrossel interativo com navegação e paginação.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10
+                                        border border-yellow-500/20
+                                        flex items-center justify-center mb-5">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-yellow-400"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M12 3v18M3 12h18"/>
+                                </svg>
+
+                            </div>
+
+                            <h3 class="text-lg font-semibold text-white mb-2">
+                                Estética retrô
+                            </h3>
+
+                            <p class="text-sm leading-relaxed text-gray-400">
+                                Tipografia, cores, estrelas, brilhos e elementos visuais
+                                reforçam a proposta de nostalgia dos jogos clássicos.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Desenvolvimento -->
+                <section>
+
+                    <div class="mb-8">
+
+                        <span class="text-yellow-400 text-sm font-semibold uppercase tracking-widest">
+                            Desenvolvimento
+                        </span>
+
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
+                            Construção do projeto
+                        </h2>
+
+                    </div>
+
+                    <div class="space-y-6">
+
+                        <div class="p-7 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <h3 class="text-xl font-semibold text-white mb-4">
+                                Frontend com JavaScript
+                            </h3>
+
+                            <p class="text-gray-400 leading-relaxed">
+                                O projeto é baseado em tecnologias frontend e possui diversos
+                                jogos independentes implementados em JavaScript. Cada jogo possui
+                                sua própria estrutura de HTML, CSS e JavaScript, enquanto a
+                                plataforma principal funciona como ponto de entrada para o catálogo.
+                            </p>
+
+                        </div>
+
+
+                        <div class="p-7 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <h3 class="text-xl font-semibold text-white mb-4">
+                                Organização da plataforma
+                            </h3>
+
+                            <p class="text-gray-400 leading-relaxed">
+                                A aplicação possui páginas específicas para navegação e categorias,
+                                como Ação, Aventura, Clássicos, Tiro, Carro, Multiplayer, Cartas,
+                                Memória e Raciocínio. Os jogos são organizados em diretórios próprios
+                                e acessados através da interface principal.
+                            </p>
+
+                        </div>
+
+
+                        <div class="p-7 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <h3 class="text-xl font-semibold text-white mb-4">
+                                Interface e interação
+                            </h3>
+
+                            <p class="text-gray-400 leading-relaxed">
+                                A interface utiliza Tailwind CSS via CDN para a composição visual,
+                                enquanto JavaScript controla interações da plataforma, incluindo
+                                o menu lateral, geração de estrelas e navegação do carrossel
+                                implementado com Swiper.js.
+                            </p>
+
+                        </div>
+
+
+                        <div class="p-7 rounded-2xl bg-gradient-to-br from-yellow-500/10 to-transparent
+                                    border border-yellow-500/20">
+
+                            <div class="flex items-start gap-4">
+
+                                <div class="w-10 h-10 shrink-0 rounded-xl bg-yellow-500/10
+                                            flex items-center justify-center">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="w-5 h-5 text-yellow-400"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="text-lg font-semibold text-white mb-2">
+                                        Arquitetura
+                                    </h3>
+
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Frontend estático com jogos independentes executados no
+                                        navegador. A plataforma não utiliza backend ou banco de dados
+                                        para sua estrutura principal.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
             </div>
+
+
+            <!-- Sidebar -->
+            <aside class="space-y-6">
+
+                <!-- Tecnologias -->
+                <div class="p-7 rounded-3xl bg-slate-900/70 border border-slate-800">
+
+                    <h3 class="text-lg font-semibold text-white mb-6">
+                        Tecnologias
+                    </h3>
+
+                    <div class="space-y-3">
+
+                        <div class="tech-card flex items-center justify-between
+                                    p-4 rounded-xl bg-slate-950/70 border border-slate-800">
+
+                            <span class="text-sm text-gray-300">
+                                HTML5
+                            </span>
+
+                            <span class="text-xs text-gray-500">
+                                Estrutura
+                            </span>
+
+                        </div>
+
+                        <div class="tech-card flex items-center justify-between
+                                    p-4 rounded-xl bg-slate-950/70 border border-slate-800">
+
+                            <span class="text-sm text-gray-300">
+                                CSS3
+                            </span>
+
+                            <span class="text-xs text-gray-500">
+                                Estilos
+                            </span>
+
+                        </div>
+
+                        <div class="tech-card flex items-center justify-between
+                                    p-4 rounded-xl bg-slate-950/70 border border-slate-800">
+
+                            <span class="text-sm text-gray-300">
+                                JavaScript
+                            </span>
+
+                            <span class="text-xs text-gray-500">
+                                Lógica
+                            </span>
+
+                        </div>
+
+                        <div class="tech-card flex items-center justify-between
+                                    p-4 rounded-xl bg-slate-950/70 border border-slate-800">
+
+                            <span class="text-sm text-gray-300">
+                                Tailwind CSS
+                            </span>
+
+                            <span class="text-xs text-gray-500">
+                                Interface
+                            </span>
+
+                        </div>
+
+                        <div class="tech-card flex items-center justify-between
+                                    p-4 rounded-xl bg-slate-950/70 border border-slate-800">
+
+                            <span class="text-sm text-gray-300">
+                                Swiper.js
+                            </span>
+
+                            <span class="text-xs text-gray-500">
+                                Carrossel
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Links -->
+                <div class="p-7 rounded-3xl bg-slate-900/70 border border-slate-800">
+
+                    <h3 class="text-lg font-semibold text-white mb-5">
+                        Projeto
+                    </h3>
+
+                    <a href="https://sejvnosmagic.netlify.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-between gap-4 p-4 rounded-xl
+                              bg-yellow-500 text-black font-semibold
+                              hover:bg-yellow-400 transition-colors">
+
+                        <span>
+                            Acessar projeto
+                        </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="w-5 h-5"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M14 5h5m0 0v5m0-5L10 14"/>
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M19 14v4a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h4"/>
+                        </svg>
+
+                    </a>
+
+
+                    <a href="https://github.com/dev-joaovb/NosmagiC"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-between gap-4 p-4 rounded-xl
+                              bg-white/5 border border-white/10 text-white font-medium
+                              hover:bg-white/10 transition-colors mt-3">
+
+                        <span>
+                            GitHub
+                        </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="w-5 h-5"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M15 22v-4a4.8 4.8 0 00-1-3.5c3.3 0 6.7-1.6 6.7-7a5.4 5.4 0 00-1.1-3.7 5 5 0 000-3.7S18.4-.2 15 1.1a13.4 13.4 0 00-7 0C4.6-.2 3.4.1 3.4.1a5 5 0 000 3.7A5.4 5.4 0 002.3 7.5c0 5.4 3.4 7 6.7 7a4.8 4.8 0 00-1 3.5v4"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Informações -->
+                <div class="p-7 rounded-3xl bg-slate-900/70 border border-slate-800">
+
+                    <h3 class="text-lg font-semibold text-white mb-6">
+                        Informações
+                    </h3>
+
+                    <div class="space-y-5">
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Ano
+                            </p>
+
+                            <p class="text-white font-medium">
+                                2023
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Serviço
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Desenvolvimento Frontend
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Tipo de projeto
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Plataforma de Jogos Web
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Status
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Concluído
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                                Arquitetura
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Frontend
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Escopo -->
+                <div class="p-7 rounded-3xl
+                            bg-gradient-to-br from-yellow-500/10 to-transparent
+                            border border-yellow-500/20">
+
+                    <p class="text-xs uppercase tracking-wider text-yellow-400 mb-3">
+                        Escopo
+                    </p>
+
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Projeto focado em desenvolvimento frontend, lógica de jogos,
+                        organização de conteúdo e criação de uma experiência web
+                        voltada para entretenimento e nostalgia.
+                    </p>
+
+                </div>
+
+            </aside>
 
         </div>
+
     </main>
 
-    <footer class="bg-gray-600 hover:bg-black transition-colors duration-700 text-white py-12 mt-20">
-        <div class="text-center space-y-6">
-            <div class="flex justify-center gap-8 text-3xl">
-                <a href="https://www.linkedin.com/in/sejoaovb" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/dev-joaovb" class="hover:text-gray-300 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/sejoaovb/" class="hover:text-pink-500 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5561993726776" class="hover:text-green-500 transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- CTA -->
+    <section class="relative border-t border-white/5 overflow-hidden">
+
+        <div class="absolute inset-0 bg-gradient-to-r from-yellow-500/10
+                    via-transparent to-purple-500/10"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24">
+
+            <div class="max-w-3xl">
+
+                <span class="text-yellow-400 text-sm font-semibold uppercase tracking-widest">
+                    Conheça o projeto
+                </span>
+
+                <h2 class="text-3xl md:text-5xl font-bold text-white mt-4 mb-6">
+                    Uma coleção de jogos diretamente no navegador.
+                </h2>
+
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    Explore o NosmagiC e conheça a variedade de jogos e experiências
+                    desenvolvidas para a plataforma.
+                </p>
+
+                <a href="https://sejvnosmagic.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl
+                          bg-yellow-500 text-black font-semibold
+                          hover:bg-yellow-400 transition-colors">
+
+                    Acessar NosmagiC
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="w-5 h-5"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M7 17L17 7M7 7h10v10"/>
+                    </svg>
+
+                </a>
+
             </div>
-            <p class="text-sm opacity-75">© 2026 Criado por João Victor B.C. | Direitos Reservados</p>
+
         </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8
+                    flex flex-col md:flex-row items-center justify-between gap-4">
+
+            <p class="text-sm text-gray-500">
+                © 2026 João Victor. Todos os direitos reservados.
+            </p>
+
+            <a href="index.html#projetos"
+               class="text-sm text-gray-400 hover:text-white transition-colors">
+                Voltar aos projetos
+            </a>
+
+        </div>
+
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('md:bg-transparent', 'md:text-white', 'py-4');
-                navbar.classList.add('bg-white', 'text-black', 'shadow-lg', 'py-2');
-            } else {
-                // No mobile o navbar sempre será branco para legibilidade
-                if (window.innerWidth > 768) {
-                    navbar.classList.add('md:bg-transparent', 'md:text-white', 'py-4');
-                    navbar.classList.remove('bg-white', 'text-black', 'shadow-lg', 'py-2');
-                }
-            }
-        });
-    </script>
 </body>
 </html>

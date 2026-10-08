@@ -1,121 +1,850 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmony Maestro | Detalhes do Projeto</title>
+
+    <title>Harmony Maestro | Projeto Full Stack</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
     <style>
-        #navbar { transition: all 0.4s ease-in-out; }
-        .tech-badge { @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium border border-gray-200; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #020617;
+        }
+
+        #navbar {
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                padding 0.3s ease;
+        }
+
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(20, 184, 166, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 184, 166, 0.035) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .image-card {
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            border-color: rgba(45, 212, 191, 0.35);
+        }
+
+        .feature-card {
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(45, 212, 191, 0.3);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        .tech-item {
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background-color 0.25s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(45, 212, 191, 0.35);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-line {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, #14b8a6, #38bdf8);
+            border-radius: 999px;
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800">
 
-    <nav id="navbar" class="fixed w-full z-50 top-0 left-0 px-8 py-4 flex justify-between items-center text-black bg-white shadow-sm md:bg-transparent md:text-white">
-        <a href="index.html" class="text-black text-2xl font-bold tracking-widest uppercase">João Victor</a>
-        <div class="space-x-8 font-medium hidden md:block">
-            <a href="index.html#sobre" class="text-black hover:text-blue-400 transition">Sobre</a>
-            <a href="index.html#portfolio" class="text-black hover:text-blue-400 transition font-bold border-b-2 border-blue-400">Portifólio</a>
-            <a href="index.html#resumo" class="text-black hover:text-blue-400 transition">Resumo</a>
-            <a href="index.html#contato" class="text-black hover:text-blue-400 transition">Contato</a>
+<body class="bg-slate-950 text-slate-300">
+
+    <!-- Navbar -->
+    <nav
+        id="navbar"
+        class="fixed top-0 left-0 w-full z-50 px-6 md:px-10 py-5 bg-slate-950/75 backdrop-blur-md border-b border-slate-800/60"
+    >
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <a
+                href="index.html"
+                class="text-white text-xl md:text-2xl font-bold tracking-widest uppercase"
+            >
+                João Victor
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html#sobre" class="text-slate-300 hover:text-teal-400 transition">
+                    Sobre
+                </a>
+
+                <a
+                    href="index.html#portfolio"
+                    class="text-teal-400 border-b border-teal-400 pb-1"
+                >
+                    Portfólio
+                </a>
+
+                <a href="index.html#resumo" class="text-slate-300 hover:text-teal-400 transition">
+                    Resumo
+                </a>
+
+                <a href="index.html#contato" class="text-slate-300 hover:text-teal-400 transition">
+                    Contato
+                </a>
+            </div>
+
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 bg-gray-50 px-6">
-        <div class="max-w-6xl mx-auto">
-            <nav class="text-sm text-gray-500 mb-4">
-                <a href="index.html" class="hover:text-black">Home</a> / 
-                <a href="index.html#portfolio" class="hover:text-black">Portifólio</a> / 
-                <span class="text-black font-semibold">Harmony Maestro</span>
-            </nav>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Harmony Maestro</h1>
-            <p class="text-xl text-gray-600 italic">Uma plataforma escalável focada em gestão de bandas em eventos.</p>
+
+    <!-- Hero -->
+    <header class="relative overflow-hidden pt-36 pb-24 hero-grid">
+
+        <div class="absolute inset-0 bg-gradient-to-b from-teal-950/20 via-slate-950/60 to-slate-950"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 md:px-10">
+
+            <a
+                href="index.html#portfolio"
+                class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-teal-400 transition mb-10"
+            >
+                <i class="fas fa-arrow-left"></i>
+                Voltar para o portfólio
+            </a>
+
+            <div class="max-w-4xl">
+
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-500/20 bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-6"
+                >
+                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                    Projeto Full Stack • Gestão Musical
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
+                    Harmony
+                    <span class="gradient-text">Maestro</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl">
+                    Plataforma full stack desenvolvida para centralizar a gestão de
+                    bandas e grupos musicais, organizando eventos, escalas, repertórios,
+                    partituras, membros e controle de presença em um único sistema.
+                </p>
+
+            </div>
+
+            <div class="flex flex-wrap gap-3 mt-10 text-sm">
+
+                <span class="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300">
+                    React
+                </span>
+
+                <span class="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300">
+                    Node.js
+                </span>
+
+                <span class="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300">
+                    PostgreSQL
+                </span>
+
+                <span class="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300">
+                    Prisma
+                </span>
+
+            </div>
+
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto px-6 md:px-10 pb-24">
+
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            <div class="lg:col-span-2 space-y-8">
-                <div class="rounded-xl overflow-hidden shadow-2xl">
-                    <img src="/public/projetos/harmony1.png" alt="Preview do Projeto" class="w-full h-auto">
-                </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="/public/projetos/harmony2.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
-                    <img src="/public/projetos/harmony3.png" class="rounded-lg shadow hover:opacity-90 transition cursor-pointer">
-                </div>
+            <!-- Conteúdo principal -->
+            <div class="lg:col-span-2 space-y-16">
 
-                <div class="prose prose-lg max-w-none text-gray-700">
-                    <h2 class="text-2xl font-bold text-black mb-4">Sobre o Projeto</h2>
-                    <p class="mb-4 text-justify leading-relaxed">
-                        O Harmony Maestro é uma solução completa de gerenciamento voltada para profissionalizar a logística e a disciplina de grupos musicais. A plataforma centraliza a organização de eventos e ensaios, permitindo ao administrador (líder da banda) um controle rigoroso sobre escalas, repertórios, partituras e a presença dos integrantes.
-                    </p>
-                    <p class="text-justify leading-relaxed">
-                        O sistema foca na gestão disciplinar e financeira, automatizando o monitoramento de faltas e a geração de relatórios de desempenho, essenciais para o controle de pagamentos e conduta profissional. Além disso, promove a integração da equipe por meio de um chat interno, cujos registros são salvos em relatórios, garantindo total transparência e rastreabilidade na comunicação do grupo.
-                    </p>
-                </div>
-            </div>
-
-            <div class="space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <h3 class="text-lg font-bold mb-4 uppercase tracking-wider">Tecnologias</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">React</span>
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">Node.js</span>
-                        <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-bold">Tailwind CSS</span>
-                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">PostgreSQL</span>
-                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-bold">Figma</span>
+                <!-- Imagem principal -->
+                <section>
+                    <div class="image-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl">
+                        <img
+                            src="/public/projetos/harmony1.png"
+                            alt="Tela principal do Harmony Maestro"
+                            class="w-full h-auto"
+                        >
                     </div>
-                </div>
+                </section>
 
-                <div class="flex flex-col gap-4">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="hidden flex items-center justify-center gap-3 bg-black text-white py-4 rounded-lg font-bold hover:bg-gray-800 transition shadow-lg">
-                        <i class="fas fa-external-link-alt"></i> Acessar Site Ao Vivo
-                    </a>
-                    <a href="https://github.com/dev-joaovb/interface-musitian" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 border-2 border-black text-black py-4 rounded-lg font-bold hover:bg-black hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i> Ver Código Fonte
-                    </a>
-                </div>
 
-                <div class="pt-6 border-t border-gray-200 text-sm text-gray-500 space-y-2">
-                    <p><strong>Cliente:</strong> Phrasemídia Solutions</p>
-                    <p><strong>Ano:</strong> 2025</p>
-                    <p><strong>Serviço:</strong> Full-stack Development</p>
-                </div>
+                <!-- Galeria -->
+                <section>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="section-line"></div>
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold">
+                            Interface
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <div class="image-card overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                            <img
+                                src="/public/projetos/harmony2.png"
+                                alt="Interface do Harmony Maestro"
+                                class="w-full h-auto"
+                            >
+                        </div>
+
+                        <div class="image-card overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                            <img
+                                src="/public/projetos/harmony3.png"
+                                alt="Outra tela do Harmony Maestro"
+                                class="w-full h-auto"
+                            >
+                        </div>
+
+                    </div>
+                </section>
+
+
+                <!-- Sobre -->
+                <section id="sobre">
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="section-line"></div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.2em] text-teal-400 font-semibold mb-1">
+                                Sobre o projeto
+                            </p>
+
+                            <h2 class="text-3xl font-bold text-white">
+                                Gestão musical centralizada
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5 text-slate-400 leading-relaxed text-lg">
+
+                        <p>
+                            O Harmony Maestro é uma plataforma desenvolvida para
+                            profissionalizar a organização e a gestão de grupos musicais.
+                            A aplicação centraliza informações que normalmente ficam
+                            distribuídas entre mensagens, planilhas e arquivos,
+                            proporcionando um ambiente único para administradores e
+                            integrantes.
+                        </p>
+
+                        <p>
+                            O sistema permite administrar eventos, séries de eventos,
+                            membros, escalas, repertórios, músicas e partituras, além de
+                            acompanhar a disponibilidade e a presença dos integrantes.
+                            Dessa forma, o responsável pelo grupo consegue organizar
+                            previamente cada compromisso e acompanhar sua execução.
+                        </p>
+
+                        <p>
+                            A aplicação também possui recursos de comunicação,
+                            notificações, registros de atividades e relatórios,
+                            criando uma estrutura mais organizada e rastreável para
+                            o gerenciamento da equipe.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Funcionalidades -->
+                <section>
+
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="section-line"></div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.2em] text-teal-400 font-semibold mb-1">
+                                Funcionalidades
+                            </p>
+
+                            <h2 class="text-3xl font-bold text-white">
+                                Principais recursos
+                            </h2>
+                        </div>
+                    </div>
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-calendar-days"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Eventos e calendário
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Organização de eventos, datas, locais, descrições,
+                                séries e histórico de compromissos.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-users"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Gestão de membros
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Cadastro de integrantes, informações pessoais,
+                                instrumentos, experiência e disponibilidade.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-list-check"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Escalas semanais
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Configuração de escalas, rotação de integrantes,
+                                substituições e definição das músicas utilizadas.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-music"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Biblioteca musical
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Organização de músicas, artistas, arquivos de áudio,
+                                pastas e partituras.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Controle de presença
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Confirmação de disponibilidade, acompanhamento de
+                                presença e registros administrativos.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-chart-column"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Relatórios
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Visualização de dados e geração de relatórios para
+                                acompanhamento dos eventos e presença.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-comments"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Comunicação
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Chat associado aos eventos, mensagens, notificações
+                                e registro das atividades do sistema.
+                            </p>
+
+                        </article>
+
+
+                        <article class="feature-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
+
+                            <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Documentos e arquivos
+                            </h3>
+
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Upload e gerenciamento de arquivos musicais,
+                                partituras e documentos relacionados ao grupo.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Desenvolvimento -->
+                <section>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="section-line"></div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.2em] text-teal-400 font-semibold mb-1">
+                                Desenvolvimento
+                            </p>
+
+                            <h2 class="text-3xl font-bold text-white">
+                                Arquitetura Full Stack
+                            </h2>
+                        </div>
+                    </div>
+
+
+                    <div class="space-y-5 text-slate-400 leading-relaxed text-lg">
+
+                        <p>
+                            O projeto utiliza uma arquitetura separando a aplicação
+                            frontend da API backend. A interface foi construída com
+                            React e Vite, enquanto o servidor utiliza Node.js e Express
+                            para disponibilizar os recursos da aplicação.
+                        </p>
+
+                        <p>
+                            O PostgreSQL é utilizado como banco de dados e o Prisma
+                            atua como camada de acesso e modelagem dos dados. O sistema
+                            possui entidades relacionadas a usuários, eventos,
+                            músicas, partituras, escalas, presença, notificações,
+                            mensagens e relatórios.
+                        </p>
+
+                        <p>
+                            A aplicação também implementa autenticação, proteção de
+                            rotas, upload de arquivos, notificações por e-mail e
+                            recursos para visualização e geração de relatórios.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mt-8 p-6 rounded-2xl bg-slate-900 border border-slate-800">
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">
+                                    Frontend
+                                </p>
+
+                                <p class="text-white font-semibold">
+                                    React + Vite
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">
+                                    Backend
+                                </p>
+
+                                <p class="text-white font-semibold">
+                                    Node.js + Express
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">
+                                    Banco de dados
+                                </p>
+
+                                <p class="text-white font-semibold">
+                                    PostgreSQL + Prisma
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
             </div>
+
+
+            <!-- Sidebar -->
+            <aside class="space-y-6 lg:sticky lg:top-28 lg:self-start">
+
+                <!-- Tecnologias -->
+                <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+
+                    <div class="flex items-center justify-between mb-6">
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-teal-400 font-semibold mb-1">
+                                Stack
+                            </p>
+
+                            <h3 class="text-xl font-bold text-white">
+                                Tecnologias
+                            </h3>
+                        </div>
+
+                        <i class="fas fa-code text-slate-600 text-xl"></i>
+
+                    </div>
+
+
+                    <div class="space-y-2">
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fab fa-react text-cyan-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">React</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fab fa-js text-yellow-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">JavaScript</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-wind text-sky-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">Tailwind CSS</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fab fa-node-js text-green-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">Node.js</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-server text-slate-300 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">Express</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-database text-blue-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">PostgreSQL</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-layer-group text-purple-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">Prisma</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-chart-column text-emerald-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">Recharts</span>
+                        </div>
+
+                        <div class="tech-item flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/50">
+                            <i class="fas fa-file-pdf text-red-400 w-5 text-center"></i>
+                            <span class="text-sm text-slate-300">jsPDF</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GitHub -->
+                <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+
+                    <div class="w-12 h-12 rounded-xl bg-white/5 border border-slate-700 flex items-center justify-center mb-5">
+                        <i class="fab fa-github text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        Código-fonte
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-relaxed mb-5">
+                        Confira a implementação do projeto e sua estrutura
+                        full stack no GitHub.
+                    </p>
+
+                    <a
+                        href="https://github.com/dev-joaovb/interface-musitian"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white text-slate-950 font-semibold hover:bg-teal-400 transition"
+                    >
+                        <i class="fab fa-github"></i>
+                        Ver no GitHub
+                    </a>
+
+                </div>
+
+
+                <!-- Informações -->
+                <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+
+                    <p class="text-xs uppercase tracking-wider text-teal-400 font-semibold mb-5">
+                        Informações
+                    </p>
+
+                    <div class="space-y-5">
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Cliente
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Phrasemídia Solutions
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Ano
+                            </p>
+
+                            <p class="text-white font-medium">
+                                2025
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Serviço
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Desenvolvimento Full Stack
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Tipo de projeto
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Plataforma Web
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Status
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Concluído
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">
+                                Arquitetura
+                            </p>
+
+                            <p class="text-white font-medium">
+                                Full Stack
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
 
         </div>
+
     </main>
 
-    <footer class="bg-gray-600 hover:bg-black transition-colors duration-700 text-white py-12 mt-20">
-        <div class="text-center space-y-6">
-            <div class="flex justify-center gap-8 text-3xl">
-                <a href="https://www.linkedin.com/in/sejoaovb" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/dev-joaovb" class="hover:text-gray-300 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/sejoaovb/" class="hover:text-pink-500 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5561993726776" class="hover:text-green-500 transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p class="text-sm opacity-75">© 2026 Criado por João Victor B.C. | Direitos Reservados</p>
+
+    <!-- CTA -->
+    <section class="relative overflow-hidden border-t border-slate-800">
+
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-950/40 via-slate-950 to-slate-950"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+
+            <p class="text-xs uppercase tracking-[0.25em] text-teal-400 font-semibold mb-4">
+                Próximo projeto
+            </p>
+
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+                Quer conhecer mais projetos?
+            </h2>
+
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Explore outros projetos do portfólio e conheça diferentes
+                experiências de desenvolvimento e tecnologias utilizadas.
+            </p>
+
+            <a
+                href="index.html#portfolio"
+                class="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition"
+            >
+                Ver portfólio
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
         </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-white py-12">
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+
+            <div class="flex justify-center gap-6 text-2xl mb-6">
+
+                <a
+                    href="https://www.linkedin.com/in/sejoaovb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    class="text-slate-500 hover:text-blue-400 transition transform hover:scale-110"
+                >
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
+                <a
+                    href="https://github.com/dev-joaovb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    class="text-slate-500 hover:text-white transition transform hover:scale-110"
+                >
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/sejoaovb/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    class="text-slate-500 hover:text-pink-400 transition transform hover:scale-110"
+                >
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a
+                    href="https://wa.me/5561993726776"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    class="text-slate-500 hover:text-green-400 transition transform hover:scale-110"
+                >
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+            </div>
+
+            <p class="text-sm text-slate-600">
+                © 2026 Criado por João Victor B.C. | Direitos Reservados
+            </p>
+
+        </div>
+
     </footer>
 
+
+    <!-- Navbar scroll -->
     <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('md:bg-transparent', 'md:text-white', 'py-4');
-                navbar.classList.add('bg-white', 'text-black', 'shadow-lg', 'py-2');
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add(
+                    "bg-slate-950/95",
+                    "shadow-xl",
+                    "border-slate-700/70"
+                );
+                navbar.classList.remove("bg-slate-950/75");
             } else {
-                // No mobile o navbar sempre será branco para legibilidade
-                if (window.innerWidth > 768) {
-                    navbar.classList.add('md:bg-transparent', 'md:text-white', 'py-4');
-                    navbar.classList.remove('bg-white', 'text-black', 'shadow-lg', 'py-2');
-                }
+                navbar.classList.remove(
+                    "bg-slate-950/95",
+                    "shadow-xl",
+                    "border-slate-700/70"
+                );
+                navbar.classList.add("bg-slate-950/75");
             }
         });
     </script>
+
 </body>
 </html>
